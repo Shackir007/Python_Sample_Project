@@ -5,8 +5,8 @@ import json
 
 
 def readAccessKey():
-
-    pass
+    keys=open("G:\My Douments\StudyMaterials\PythonProjects\dev_user1_accessKeys.csv",'r').readlines()[1].strip()
+    return keys.split(",")
 
 
 def connectAWS():

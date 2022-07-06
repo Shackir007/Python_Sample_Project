@@ -1,0 +1,17 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "test-maria-db-sp.cg0drg8nzhld.ap-south-1.rds.amazonaws.com",
+            "port": 3306,
+            "askForPassword": true,
+            "driver": "MariaDB",
+            "name": "test-maria-db-aws-sp",
+            "username": "admin",
+            "database": "test-maria-db-aws-sp"
+        }
+    ]
+}

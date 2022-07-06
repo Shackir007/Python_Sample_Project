@@ -3,11 +3,11 @@ import boto3
 import pandas
 import json
 
+key_file = "G:/My Douments/StudyMaterials/PythonProjects/dev_user1_accessKeys.csv"
 
 def readAccessKey():
-    keys=open("G:\My Douments\StudyMaterials\PythonProjects\dev_user1_accessKeys.csv",'r').readlines()[1].strip()
+    keys=open(key_file,'r').readlines()[1].strip()
     return keys.split(",")
-
 
 def connectAWS():
     access_key, secret_key = readAccessKey()
@@ -27,10 +27,29 @@ def connectAWS():
 
     # Fetch the list of existing buckets
     response = client.list_buckets()
-    bucket_list = response['Buckets']
+    bucket_list = response['Buckets'][0]['Name']
     print(bucket_list)
 
+    # Create the S3 object
+    obj = client.get_object(
+        Bucket=bucket_list,
+        Key="SampleExpenseData.csv"
+    )
 
-connectAWS()
+    # Read data from the S3 object
+    #fobj=open(obj['Body'],'r')
+    #data= fobj.readlines()
+
+    data = pandas.read_csv(obj['Body'], header=0)
+
+
+
+    # Print the data frame
+    print('Printing the data frame...')
+    print(data.head())
+    return data
+
+
+#connectAWS()
 
 

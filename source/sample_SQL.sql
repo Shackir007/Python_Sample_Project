@@ -1,1 +1,1 @@
-Select * from information_schema.tables;
+Select * from dept;
